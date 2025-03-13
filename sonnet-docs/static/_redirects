@@ -1,3 +1,5 @@
 # Redirect ADR pages to the home page
-/docs/adrs/* /
-/docs/adrs /
+/docs/adrs/* /docs/intro
+/docs/adrs /docs/intro
+/sonnet-3.7-docs/docs/adrs/* /claude-cli-study-guide/docs/intro
+/sonnet-3.7-docs/docs/adrs /claude-cli-study-guide/docs/intro

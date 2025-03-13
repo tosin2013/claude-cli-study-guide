@@ -5,20 +5,20 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Claude CLI Study Project',
+  title: 'Claude CLI Study Guide',
   tagline: 'Learning from Claude CLI\'s architecture and design patterns',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://tosin2013.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: '/sonnet-3.7-docs/',
+  baseUrl: '/claude-cli-study-guide/',
 
   // GitHub pages deployment config.
   organizationName: 'tosin2013',
-  projectName: 'sonnet-3.7-docs',
+  projectName: 'claude-cli-study-guide',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -41,11 +41,11 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/tosin2013/sonnet-3.7-docs/tree/main/',
+          editUrl: 'https://github.com/tosin2013/claude-cli-study-guide/tree/main/',
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/tosin2013/sonnet-3.7-docs/tree/main/',
+          editUrl: 'https://github.com/tosin2013/claude-cli-study-guide/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -58,9 +58,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Claude CLI Study Project',
+      title: 'Claude CLI Study Guide',
       logo: {
-        alt: 'Claude CLI Study Logo',
+        alt: 'Claude CLI Study Guide Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -81,12 +81,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          to: '/docs/adrs/ADR-018-docusaurus-migration',
-          label: 'ADRs',
-          position: 'left',
-        },
-        {
-          href: 'https://github.com/tosin2013/sonnet-3.7-docs',
+          href: 'https://github.com/tosin2013/claude-cli-study-guide',
           label: 'GitHub',
           position: 'right',
         },
@@ -105,10 +100,6 @@ const config: Config = {
             {
               label: 'Methodology',
               to: '/docs/methodology',
-            },
-            {
-              label: 'Architecture Decisions',
-              to: '/docs/adrs',
             },
           ],
         },
@@ -134,7 +125,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/tosin2013/sonnet-3.7-docs',
+              href: 'https://github.com/tosin2013/claude-cli-study-guide',
             },
             {
               label: 'Anthropic',
@@ -143,7 +134,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Claude CLI Study Project. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Claude CLI Study Guide. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

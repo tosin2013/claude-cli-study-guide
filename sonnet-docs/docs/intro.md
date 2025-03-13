@@ -50,7 +50,6 @@ For those interested in specific aspects of our study:
 
 - [Semantic Chunking Analysis](/docs/findings/semantic-chunking)
 - [Hybrid Architecture Study](/docs/findings/hybrid-architecture)
-- [LiteLLM Integration Experiment](/docs/experiments/litellm-integration)
-- [Architecture Decision Records](/docs/adrs/ADR-018-docusaurus-migration)
+- [LiteLLM Integration Experiment](/docs/guides/litellm-integration)
 
 This is an educational project focused on learning from Claude CLI. Our goal is not to replicate its functionality exactly, but to understand and learn from its design principles and architectural patterns.
