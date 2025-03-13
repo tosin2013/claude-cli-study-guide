@@ -1,0 +1,3 @@
+# Redirect ADR pages to the home page
+/docs/adrs/* /
+/docs/adrs /

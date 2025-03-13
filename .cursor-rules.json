@@ -1,0 +1,141 @@
+{
+  "project": "CodeCompass",
+  "version": "1.0.0",
+  "description": "Cursor rules for CodeCompass project based on ADRs",
+  "rules": {
+    "semantic_chunking": {
+      "enabled": true,
+      "description": "Based on ADR-001: Uses semantic chunking for codebase ingestion",
+      "chunk_size": 2000,
+      "priority_files": [
+        "docs/adrs/*.md",
+        "scripts/**/*.sh",
+        "README.md"
+      ],
+      "exclude_patterns": [
+        "node_modules/**",
+        ".git/**"
+      ]
+    },
+    "differential_updates": {
+      "enabled": true,
+      "description": "Based on ADR-002: Only process changed files for efficiency",
+      "version_manifest": ".claude_versions",
+      "change_detection": {
+        "use_git_diff": true,
+        "track_checksums": true
+      }
+    },
+    "hybrid_architecture": {
+      "enabled": true,
+      "description": "Based on ADR-003: Use local tools when possible, Claude for complex tasks",
+      "local_tools": [
+        "eslint",
+        "markdownlint",
+        "htmlvalidate"
+      ],
+      "complexity_threshold": 5,
+      "claude_gatekeeper": true
+    },
+    "context_caching": {
+      "enabled": true,
+      "description": "Based on ADR-004: Cache AI responses for similar contexts",
+      "cache_directory": "./.claude_cache",
+      "expiration_days": 7,
+      "invalidate_on_significant_changes": true
+    },
+    "session_management": {
+      "enabled": true,
+      "description": "Based on ADR-005: Manage Claude sessions effectively",
+      "default_ttl_hours": 8,
+      "off_peak_discount": 0.7,
+      "token_budget": 10000,
+      "schedule_bulk_operations": true
+    },
+    "github_pages": {
+      "development": {
+        "enabled": true,
+        "description": "Based on ADR-016: Local development environment for GitHub Pages",
+        "scripts": {
+          "start": "./scripts/dev/start-local-server.sh",
+          "build": "./scripts/dev/build-site.sh",
+          "lint": "./scripts/dev/lint-content.sh",
+          "validate": "./scripts/dev/validate-links.sh"
+        },
+        "docker": {
+          "enabled": true,
+          "compose_file": "./scripts/docker/docker-compose.yml"
+        }
+      }
+    },
+    "editor": {
+      "format_on_save": true,
+      "default_formatter": "prettier",
+      "tab_size": 2,
+      "insert_spaces": true,
+      "trim_trailing_whitespace": true,
+      "jsx_single_quote": false,
+      "use_markdown_lint": true
+    },
+    "ai_assistant": {
+      "preferred_model": "claude-3.7-sonnet",
+      "token_window": 128000,
+      "thinking_mode": "extended",
+      "temperature": 0.7,
+      "custom_instructions": [
+        "Reference appropriate ADRs when making architectural decisions",
+        "Follow the established patterns in the codebase",
+        "Use semantic chunking to understand the codebase efficiently",
+        "Prioritize code quality and documentation"
+      ],
+      "workflow_templates": {
+        "morning_sync": "Update understanding with overnight changes",
+        "code_review": "Review PRs with attention to architectural consistency",
+        "feature_development": "Develop features according to established architecture"
+      }
+    },
+    "cicd_integration": {
+      "enabled": true,
+      "description": "Based on ADR-006: CI/CD integration for keeping AI updated",
+      "update_on_build": true,
+      "generate_diff_summaries": true
+    },
+    "experiment_framework": {
+      "enabled": true,
+      "description": "Based on ADR-010: Framework for comparing AI-powered environments",
+      "environments": [
+        "claude-api",
+        "cursor-ai",
+        "windsurf-ai",
+        "claude-code-cli",
+        "cline-vscode"
+      ],
+      "metrics": [
+        "response_time",
+        "token_usage",
+        "code_quality_score",
+        "time_to_completion",
+        "user_intervention_count"
+      ]
+    }
+  },
+  "recommended_extensions": [
+    "cursor.cursor-lsp",
+    "esbenp.prettier-vscode",
+    "davidanson.vscode-markdownlint",
+    "ms-azuretools.vscode-docker",
+    "github.github-vscode-theme"
+  ],
+  "tasks": {
+    "setup": {
+      "mac": "./scripts/setup/setup-macos.sh",
+      "linux": "./scripts/setup/setup-linux.sh",
+      "windows": "./scripts/setup/setup-windows.ps1"
+    },
+    "dev": {
+      "start": "./scripts/dev/start-local-server.sh",
+      "build": "./scripts/dev/build-site.sh",
+      "docker": "docker-compose -f ./scripts/docker/docker-compose.yml up"
+    }
+  }
+} 

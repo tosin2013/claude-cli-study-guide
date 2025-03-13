@@ -1,0 +1,32 @@
+{
+  "name": "codecompass-docs",
+  "version": "1.0.0",
+  "description": "Documentation site for CodeCompass",
+  "scripts": {
+    "build": "jekyll build",
+    "serve": "./scripts/dev/serve.sh",
+    "generate-svgs": "node scripts/generate-svg.js",
+    "lint-md": "markdownlint docs/**/*.md",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codecompass/codecompass.git"
+  },
+  "keywords": [
+    "documentation",
+    "jekyll",
+    "mermaid",
+    "static-site"
+  ],
+  "author": "CodeCompass Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codecompass/codecompass/issues"
+  },
+  "homepage": "https://github.com/codecompass/codecompass#readme",
+  "devDependencies": {
+    "markdownlint-cli": "^0.37.0",
+    "puppeteer": "^21.7.0"
+  }
+} 

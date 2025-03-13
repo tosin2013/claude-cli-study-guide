@@ -1,0 +1,38 @@
+models:
+  # Default model to use when none is specified
+  default: "anthropic/claude-3-sonnet"
+  
+  # Preset configurations for specific use cases
+  presets:
+    - name: "code-generation"
+      model: "anthropic/claude-3-opus"
+      parameters:
+        temperature: 0.2
+        thinking_mode: "extended"
+        max_tokens: 8000
+    
+    - name: "quick-answers"
+      model: "anthropic/claude-3-haiku"
+      parameters:
+        temperature: 0.7
+        max_tokens: 1000
+    
+    - name: "cost-effective"
+      model: "mistral/mistral-large"
+      parameters:
+        temperature: 0.5
+        max_tokens: 2000
+    
+    - name: "detailed-analysis"
+      model: "gpt-4-turbo"
+      parameters:
+        temperature: 0.3
+        max_tokens: 4000
+        top_p: 0.95
+    
+    - name: "code-review"
+      model: "anthropic/claude-3-sonnet"
+      parameters:
+        temperature: 0.4
+        thinking_mode: "extended"
+        max_tokens: 4000 

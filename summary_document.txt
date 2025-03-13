@@ -1,0 +1,85 @@
+# Claude CLI Study - Experimental Learning Project
+
+## Overview
+This project is a learning experiment focused on understanding and emulating the architecture and functionality of Claude CLI. The goal is to study Claude CLI's approach to code understanding and create an experimental framework that applies similar patterns while extending them to support multiple LLM providers.
+
+## Key Learning Areas
+
+### 1. Semantic Chunking System Study (ADR-001)
+- **Purpose**: Understand how Claude CLI processes large codebases that exceed token limits
+- **Study Focus**:
+  - How Claude CLI filters and prioritizes relevant files
+  - How it chunks large files while maintaining semantic coherence
+  - How it includes critical context like class definitions and imports
+  - How it tracks processed content to avoid redundancy
+- **Learning Methodology**: Progressive testing with increasingly complex codebases
+
+### 2. Hybrid Local/Remote Architecture Study (ADR-003)
+- **Purpose**: Learn how Claude CLI balances local processing with remote API calls
+- **Study Focus**:
+  - How Claude CLI's tools (View, GrepTool, etc.) filter content locally
+  - How it determines what code context to send to the API
+  - When and how it activates extended thinking mode
+  - How session state is maintained between interactions
+- **Learning Implementation**: Creating local equivalents of Claude CLI's core tools
+
+### 3. LiteLLM Integration Experiment (ADR-017)
+- **Purpose**: Extend Claude CLI patterns to support multiple LLM providers
+- **Implementation Components**:
+  - Claude CLI analyzer for studying the original CLI's behavior
+  - Experimental CLI emulator based on findings
+  - Multi-model adaptation layer using LiteLLM
+- **Learning Goals**: Understanding how Claude-specific features translate to other models
+
+### 4. Documentation Site (ADR-018)
+- **Purpose**: Document findings and provide interactive demos
+- **Components**:
+  - Documentation of Claude CLI's observed architecture
+  - Experimental implementation examples
+  - Interactive demos showing Claude CLI capabilities
+  - Comparative analysis with other approaches
+- **Value**: Creating educational resources for others studying LLM CLI tools
+
+## Experimental Architecture
+
+```
+┌───────────────────────────────────────┐
+│     Claude CLI Study & Emulation      │
+└───────────────┬───────────────────────┘
+                │
+    ┌───────────┴──────────┐
+    │                      │
+┌───▼───────────┐    ┌─────▼─────────┐
+│ Documentation │    │ Experimental  │
+│  (Findings)   │    │ Implementation│
+└───┬───────────┘    └─────┬─────────┘
+    │                      │
+    │                ┌─────┴─────────────────┐
+    │                │                       │
+┌───▼───────┐   ┌────▼──────┐   ┌────────────▼──────────┐
+│  Claude   │   │ Chunking  │   │       Hybrid          │
+│ CLI Demos │   │  Study    │   │ Architecture Study    │
+└───────────┘   └────┬──────┘   └────────────┬──────────┘
+                     │                       │
+                ┌────▼──────┐   ┌────────────▼──────────┐
+                │Experimental│   │      LiteLLM          │
+                │ Chunker   │   │   Integration          │
+                └───────────┘   └─────────────┬─────────┘
+                                              │
+                                    ┌─────────▼──────────┐
+                                    │  Multi-Provider    │
+                                    │   CLI Emulator     │
+                                    └────────────────────┘
+```
+
+## Project Status
+This is an experimental learning project. The ADRs describe our approach to studying Claude CLI and designing experimental implementations based on our observations. The goal is educational - to understand what makes Claude CLI effective and how similar patterns might be implemented and extended.
+
+## Learning Approach
+Our methodology focuses on:
+1. **Observation**: Analyzing Claude CLI behavior with controlled experiments
+2. **Documentation**: Recording findings and patterns
+3. **Implementation**: Creating experimental equivalents to test our understanding
+4. **Reflection**: Comparing our implementations to the original to refine our understanding
+
+This project acknowledges that we cannot fully replicate Claude CLI's internals but can learn valuable architectural and design lessons from studying its behavior.
