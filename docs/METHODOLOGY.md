@@ -48,7 +48,7 @@ We create experimental implementations to test our understanding:
 
 We document our findings in several formats:
 
-1. **Architecture Decision Records (ADRs)**: Document key architectural insights
+1. **Research Papers**: Document key architectural insights and methodology
 2. **Experimental Notebooks**: Record specific experiments and their results
 3. **Implementation Code**: Create working examples of our learned patterns
 4. **Comparative Analysis**: Compare Claude CLI behavior with our implementations
@@ -84,7 +84,7 @@ Our research follows this approximate timeline:
 
 1. **Phase 1: Initial Observation** (Completed)
    - Study Claude CLI's command structure and API
-   - Document initial findings in ADRs
+   - Document initial findings in research papers
 
 2. **Phase 2: Detailed Analysis** (In Progress)
    - Conduct semantic chunking experiments

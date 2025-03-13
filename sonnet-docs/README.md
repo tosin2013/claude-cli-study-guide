@@ -14,7 +14,7 @@ This repository contains a comprehensive study guide for Claude CLI, exploring i
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-github-username/claude-cli-study-guide.git
+   git clone https://github.com/tosin2013/claude-cli-study-guide.git
    cd claude-cli-study-guide
    ```
 

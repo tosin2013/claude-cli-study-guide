@@ -13,12 +13,12 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://tosin2013.github.io',
+  url: 'https://github.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   baseUrl: '/claude-cli-study-guide/',
 
   // GitHub pages deployment config.
-  organizationName: 'tosin2013',
+  organizationName: 'your-github-username',
   projectName: 'claude-cli-study-guide',
 
   onBrokenLinks: 'throw',
@@ -45,11 +45,11 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/tosin2013/claude-cli-study-guide/tree/main/',
+          editUrl: 'https://github.com/your-github-username/claude-cli-study-guide/tree/main/',
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/tosin2013/claude-cli-study-guide/tree/main/',
+          editUrl: 'https://github.com/your-github-username/claude-cli-study-guide/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -87,7 +87,7 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://github.com/tosin2013/claude-cli-study-guide',
+            href: 'https://github.com/your-github-username/claude-cli-study-guide',
             label: 'GitHub',
             position: 'right',
           },
@@ -131,7 +131,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/tosin2013/claude-cli-study-guide',
+                href: 'https://github.com/your-github-username/claude-cli-study-guide',
               },
               {
                 label: 'Anthropic',

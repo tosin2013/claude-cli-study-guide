@@ -1,6 +1,6 @@
 # Claude CLI Study Guide
 
-[![GitHub Pages Status](https://github.com/your-github-username/claude-cli-study-guide/workflows/github-pages/badge.svg)](https://github.com/your-github-username/claude-cli-study-guide/actions)
+[![GitHub Pages Status](https://github.com/tosin2013/claude-cli-study-guide/workflows/deploy/badge.svg)](https://github.com/tosin2013/claude-cli-study-guide/actions)
 
 This project focuses on studying and learning from Claude CLI's architecture, design patterns, and capabilities. We analyze how Claude CLI efficiently processes large codebases and create experimental implementations to test our understanding.
 
@@ -15,10 +15,10 @@ This project focuses on studying and learning from Claude CLI's architecture, de
 
 ## 📚 Documentation & Learning Resources
 
-Visit our [GitHub Pages site](https://your-github-username.github.io/claude-cli-study-guide/) for interactive learning resources, architecture visualizations, and detailed documentation of our findings.
+Visit our [GitHub Pages site](https://tosin2013.github.io/claude-cli-study-guide/) for interactive learning resources, architecture visualizations, and detailed documentation of our findings.
 
-- [Interactive Demos](https://your-github-username.github.io/claude-cli-study-guide/docs/demos/)
-- [Experimental Findings](https://your-github-username.github.io/claude-cli-study-guide/docs/findings/)
+- [Interactive Demos](https://tosin2013.github.io/claude-cli-study-guide/docs/demos/)
+- [Experimental Findings](https://tosin2013.github.io/claude-cli-study-guide/docs/findings/)
 
 Comprehensive documentation is also available in the [docs](docs) directory:
 
@@ -34,73 +34,69 @@ Comprehensive documentation is also available in the [docs](docs) directory:
 - An Anthropic API key with access to Claude 3.7 Sonnet
 - Claude CLI installed (for comparative analysis)
 
-### Setup for Learning and Experimentation
+### Setup for Documentation Site
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-github-username/claude-cli-study-guide.git
+git clone https://github.com/tosin2013/claude-cli-study-guide.git
 cd claude-cli-study-guide
 
-# Install dependencies
+# Install dependencies for the main project
 npm install
 
-# Configure your API key
-cp .env.example .env
-# Edit .env to add your Anthropic API key
+# Install dependencies for the Docusaurus site
+cd sonnet-docs
+npm install
 
-# Run the setup script
-npm run setup
+# Start the documentation site locally
+npm run start
 ```
 
-### Running Experiments
+### Running the Documentation Site
 
 ```bash
-# Study how Claude CLI processes a directory
-npm run experiment:chunking -- /path/to/test/repo
-
-# Analyze differential update behavior
-npm run experiment:diff -- /path/to/repo
-
-# Test our experimental CLI emulator
-npm run demo:emulator
+# In the sonnet-docs directory
+npm run start     # Start development server
+npm run build     # Build for production
+npm run serve     # Serve production build locally
 ```
 
-## 🧪 Experimental Implementations
+## 🧪 Experimental Code
 
-Our project includes several experimental implementations based on our study of Claude CLI:
+Our project includes experimental code based on our study of Claude CLI:
 
-### Semantic Chunking Study
+### Semantic Chunking Analyzer
+
+We've created a Python script to analyze how Claude CLI processes and chunks large codebases:
 
 ```python
 # Run our semantic chunking analysis on a codebase
-python scripts/experiments/analyze_chunking.py --repo=/path/to/repo --query="Explain the auth system"
+python experiments/chunking/analyze_chunking.py --repo=/path/to/repo --query="Explain the auth system"
 ```
 
-### Multi-Provider CLI Emulator
-
-Our experimental CLI emulator extends Claude CLI patterns to other LLM providers:
-
-```python
-from claude_study.emulator import ClaudeCliEmulator
-
-# Create emulator with any LiteLLM-supported model
-emulator = ClaudeCliEmulator("anthropic/claude-3-sonnet")
-
-# Add code context and get responses (similar to Claude CLI)
-emulator.file_send("main.py")
-response = emulator.prompt("Explain what this code does")
-```
+This script:
+1. Creates a Claude CLI session
+2. Sends a directory to Claude
+3. Queries Claude about the codebase
+4. Analyzes which files and sections are referenced in the response
+5. Generates detailed reports on Claude's semantic chunking behavior
 
 ## 📋 Research Roadmap
 
 - [x] Study Claude CLI's command structure and API
-- [x] Document findings in Architecture Decision Records
+- [x] Document findings in methodical research
 - [ ] Analyze semantic chunking behavior (In Progress)
 - [ ] Study differential update patterns (In Progress)
 - [ ] Implement experimental CLI emulator (In Progress)
 - [ ] Extend patterns to other LLM providers via LiteLLM (Planned)
 - [ ] Create interactive demos to share findings (Planned)
 - [ ] Publish comprehensive documentation of learnings (Planned)
+
+## 🚀 Deployment
+
+This project is automatically deployed to GitHub Pages. You can access the deployed site at [https://tosin2013.github.io/claude-cli-study-guide/](https://tosin2013.github.io/claude-cli-study-guide/).
+
+For more information about the deployment process, see [README-DEPLOY.md](README-DEPLOY.md).
 
 ## 🤝 Contributing
 
