@@ -60,12 +60,13 @@ jobs:
           ls -la sonnet-docs
           echo "\nsonnet-docs/build directory:"
           ls -la sonnet-docs/build || echo "Build directory not found!"
+          echo "\nFull path of build directory:"
+          realpath sonnet-docs/build
       
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: github-pages
-          path: ./sonnet-docs/build  # Make sure this path exists and contains the built files
+          path: sonnet-docs/build
 
   deploy:
     environment:
@@ -77,4 +78,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v1
