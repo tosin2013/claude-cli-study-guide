@@ -64,7 +64,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
+          name: pages-artifact  # Updated artifact name
           path: sonnet-docs/build
           retention-days: 1
 
@@ -79,3 +79,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
+        with:
+          artifact_name: pages-artifact  # Ensure this matches the upload step
