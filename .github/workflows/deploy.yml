@@ -62,13 +62,20 @@ jobs:
           ls -la sonnet-docs/build || echo "Build directory not found!"
           echo "\nFull path of build directory:"
           realpath sonnet-docs/build
+          echo "\nContents of build directory:"
+          find sonnet-docs/build -type f | sort
       
       - name: Upload artifact
+        id: upload-artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
           path: sonnet-docs/build
-          retention-days: 1
+
+      - name: Verify artifact
+        run: |
+          echo "Artifact details:"
+          echo "Upload result: ${{ steps.upload-artifact.outcome }}"
+          echo "Artifact name: github-pages"
 
   deploy:
     environment:
