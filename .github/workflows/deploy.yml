@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
       
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -39,16 +39,27 @@ jobs:
       - name: Install dependencies
         run: |
           cd sonnet-docs
+          echo "Installing dependencies..."
           npm ci
+          echo "Dependencies installed. Checking node_modules..."
+          ls -la node_modules | head -n 10
       
       - name: Build website
         run: |
           cd sonnet-docs
           npm run build
+          echo "Build completed. Checking output..."
+          ls -la build || echo "Build directory not found!"
       
+      - name: List build directory
+        run: |
+          echo "Checking if build directory exists..."
+          ls -la sonnet-docs/build || echo "Build directory doesn't exist!"
+          
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
+          name: github-pages
           path: sonnet-docs/build
 
   deploy:
