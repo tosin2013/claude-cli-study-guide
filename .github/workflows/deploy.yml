@@ -44,14 +44,32 @@ jobs:
           cd sonnet-docs
           npm run build
 
+      - name: Debug - List Directories
+        run: |
+          echo "Current directory structure:"
+          pwd
+          ls -la
+          echo "sonnet-docs directory:"
+          ls -la sonnet-docs
+          echo "sonnet-docs/build directory:"
+          ls -la sonnet-docs/build
+
       - name: Prepare artifact
         run: |
           echo "Checking for symlinks in build directory..."
           find sonnet-docs/build -type l -exec rm {} \;
           echo "Creating clean copy of build directory..."
-          cp -rL sonnet-docs/build build_pages
+          mkdir -p build_pages
+          cp -rL sonnet-docs/build/* build_pages/
           echo "Listing contents of prepared directory..."
           ls -la build_pages
+
+      - name: Debug - Verify Artifact Directory
+        run: |
+          echo "Verifying build_pages directory contents:"
+          ls -la build_pages
+          echo "Total files in build_pages:"
+          find build_pages -type f | wc -l
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
