@@ -57,7 +57,7 @@ jobs:
           ls -la sonnet-docs/build || echo "Build directory doesn't exist!"
           
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: sonnet-docs/build
 
