@@ -18,7 +18,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,46 +47,16 @@ jobs:
           cd sonnet-docs
           npm run build
 
-      - name: Debug - List Directories
+      - name: List build output
         run: |
-          echo "Current directory structure:"
-          pwd
-          ls -la
-          echo "sonnet-docs directory:"
-          ls -la sonnet-docs
-          echo "sonnet-docs/build directory:"
+          echo "Build directory contents:"
           ls -la sonnet-docs/build
 
-      - name: Prepare artifact
-        run: |
-          echo "Checking for symlinks in build directory..."
-          find sonnet-docs/build -type l -exec rm {} \;
-          echo "Creating clean copy of build directory..."
-          mkdir -p build_pages
-          cp -rL sonnet-docs/build/* build_pages/
-          echo "Listing contents of prepared directory..."
-          ls -la build_pages
-
-      - name: Debug - Verify Artifact Directory
-        run: |
-          echo "Verifying build_pages directory contents:"
-          ls -la build_pages
-          echo "Total files in build_pages:"
-          find build_pages -type f | wc -l
-
-      - name: Upload Pages artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
-          path: build_pages
+          path: sonnet-docs/build
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
