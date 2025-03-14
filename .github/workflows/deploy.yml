@@ -47,13 +47,20 @@ jobs:
           cd sonnet-docs
           npm run build
 
+      - name: Prepare artifact
+        run: |
+          echo "Checking for symlinks in build directory..."
+          find sonnet-docs/build -type l -exec rm {} \;
+          echo "Creating clean copy of build directory..."
+          cp -rL sonnet-docs/build build_pages
+          echo "Listing contents of prepared directory..."
+          ls -la build_pages
+
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
-          path: sonnet-docs/build
-          if-no-files-found: error
+          path: build_pages
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v3
