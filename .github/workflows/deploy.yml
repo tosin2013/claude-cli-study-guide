@@ -6,7 +6,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Sets permissions of the PUSH_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -80,4 +80,5 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v3
         with:
+          token: ${{ secrets.PUSH_TOKEN }}  # Ensure the token is correctly referenced
           artifact_name: pages-artifact  # Ensure this matches the upload step
