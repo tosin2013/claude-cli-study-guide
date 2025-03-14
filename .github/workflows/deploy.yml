@@ -64,6 +64,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          name: github-pages
           path: ./sonnet-docs/build  # Make sure this path exists and contains the built files
 
   deploy:
