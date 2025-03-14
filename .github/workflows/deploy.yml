@@ -14,81 +14,44 @@ permissions:
 
 # Allow only one concurrent deployment
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: npm
           cache-dependency-path: sonnet-docs/package-lock.json
-      
+
       - name: Setup Pages
-        id: pages
         uses: actions/configure-pages@v3
-        with:
-          token: ${{ secrets.PUSH_TOKEN }}
-      
+
       - name: Install dependencies
         run: |
           cd sonnet-docs
-          echo "Installing dependencies..."
           npm ci
-          echo "Dependencies installed. Checking node_modules..."
-          ls -la node_modules | head -n 10
-      
-      - name: Build website
+
+      - name: Build
         run: |
           cd sonnet-docs
           npm run build
-          echo "Build completed. Checking output..."
-          ls -la build || echo "Build directory not found!"
-      
-      - name: Debug build output
-        run: |
-          echo "Current directory structure:"
-          pwd
-          ls -la
-          echo "\nsonnet-docs directory:"
-          ls -la sonnet-docs
-          echo "\nsonnet-docs/build directory:"
-          ls -la sonnet-docs/build || echo "Build directory not found!"
-          echo "\nFull path of build directory:"
-          realpath sonnet-docs/build
-          echo "\nContents of build directory:"
-          find sonnet-docs/build -type f | sort
-      
+
       - name: Upload artifact
-        id: upload-artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: sonnet-docs/build
 
-      - name: Verify artifact
-        run: |
-          echo "Artifact details:"
-          echo "Upload result: ${{ steps.upload-artifact.outcome }}"
-          echo "Artifact name: github-pages"
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
-        with:
-          token: ${{ secrets.PUSH_TOKEN }}
