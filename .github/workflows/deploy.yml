@@ -61,10 +61,9 @@ jobs:
           done
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./sonnet-docs/build
-          name: github-pages
 
       - name: Deploy to GitHub Pages
         id: deployment
